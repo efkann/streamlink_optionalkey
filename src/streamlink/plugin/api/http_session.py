@@ -55,7 +55,7 @@ requests.adapters.HTTPResponse = _HTTPResponse  # type: ignore[misc]
 # > encodings.
 if urllib3_version >= (1, 25, 4):
     class Urllib3UtilUrlPercentReOverride:
-        _re_percent_encoding: Pattern = urllib3.util.url.PERCENT_RE  # type: ignore[attr-defined]
+        _re_percent_encoding: Pattern = urllib3.util.url._PERCENT_RE  # type: ignore[attr-defined]
 
         @classmethod
         def _num_percent_encodings(cls, string) -> int:
@@ -77,7 +77,7 @@ if urllib3_version >= (1, 25, 4):
 
             return _List()
 
-    urllib3.util.url.PERCENT_RE = Urllib3UtilUrlPercentReOverride  # type: ignore[attr-defined]
+    urllib3.util.url._PERCENT_RE = Urllib3UtilUrlPercentReOverride  # type: ignore[attr-defined]
 
 
 # requests.Request.__init__ keywords, except for "hooks"
